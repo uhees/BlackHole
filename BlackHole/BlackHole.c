@@ -51,7 +51,7 @@ static HRESULT	BlackHole_QueryInterface(void* inDriver, REFIID inUUID, LPVOID* o
 	//	gAudioServerPlugInDriverInterfacePtr regardless of which one is asked for.
 
 	//	declare the local variables
-	HRESULT theAnswer = 0;
+	HRESULT theAnswer = S_OK;
 	CFUUIDRef theRequestedUUID = NULL;
 	
 	//	validate the arguments
@@ -145,7 +145,7 @@ static OSStatus	BlackHole_Initialize(AudioServerPlugInDriverRef inDriver, AudioS
 	//	execution of this method.
 
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_Initialize: bad driver reference");
@@ -247,7 +247,7 @@ static OSStatus	BlackHole_AddDeviceClient(AudioServerPlugInDriverRef inDriver, A
 	#pragma unused(inClientInfo)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_AddDeviceClient: bad driver reference");
@@ -266,7 +266,7 @@ static OSStatus	BlackHole_RemoveDeviceClient(AudioServerPlugInDriverRef inDriver
 	#pragma unused(inClientInfo)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_RemoveDeviceClient: bad driver reference");
@@ -295,7 +295,7 @@ static OSStatus	BlackHole_PerformDeviceConfigurationChange(AudioServerPlugInDriv
 	#pragma unused(inChangeInfo)
 
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_PerformDeviceConfigurationChange: bad driver reference");
@@ -338,7 +338,7 @@ static OSStatus	BlackHole_AbortDeviceConfigurationChange(AudioServerPlugInDriver
 	#pragma unused(inChangeAction, inChangeInfo)
 
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_PerformDeviceConfigurationChange: bad driver reference");
@@ -403,7 +403,7 @@ static OSStatus	BlackHole_IsPropertySettable(AudioServerPlugInDriverRef inDriver
 	//	changed.
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsPropertySettable: bad driver reference");
@@ -455,7 +455,7 @@ static OSStatus	BlackHole_GetPropertyDataSize(AudioServerPlugInDriverRef inDrive
 	//	This method returns the byte size of the property's data.
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetPropertyDataSize: bad driver reference");
@@ -505,7 +505,7 @@ Done:
 static OSStatus	BlackHole_GetPropertyData(AudioServerPlugInDriverRef inDriver, AudioObjectID inObjectID, pid_t inClientProcessID, const AudioObjectPropertyAddress* inAddress, UInt32 inQualifierDataSize, const void* inQualifierData, UInt32 inDataSize, UInt32* outDataSize, void* outData)
 {
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetPropertyData: bad driver reference");
@@ -558,7 +558,7 @@ Done:
 static OSStatus	BlackHole_SetPropertyData(AudioServerPlugInDriverRef inDriver, AudioObjectID inObjectID, pid_t inClientProcessID, const AudioObjectPropertyAddress* inAddress, UInt32 inQualifierDataSize, const void* inQualifierData, UInt32 inDataSize, const void* inData)
 {
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt32 theNumberPropertiesChanged = 0;
 	AudioObjectPropertyAddress theChangedAddresses[2];
 	
@@ -660,7 +660,7 @@ static OSStatus	BlackHole_IsPlugInPropertySettable(AudioServerPlugInDriverRef in
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsPlugInPropertySettable: bad driver reference");
@@ -702,7 +702,7 @@ static OSStatus	BlackHole_GetPlugInPropertyDataSize(AudioServerPlugInDriverRef i
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetPlugInPropertyDataSize: bad driver reference");
@@ -783,7 +783,7 @@ static OSStatus	BlackHole_GetPlugInPropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt32 theNumberItemsToFetch;
 	
 	//	check the arguments
@@ -963,7 +963,7 @@ static OSStatus	BlackHole_SetPlugInPropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData, inDataSize, inData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_SetPlugInPropertyData: bad driver reference");
@@ -1046,7 +1046,7 @@ static OSStatus	BlackHole_IsBoxPropertySettable(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsBoxPropertySettable: bad driver reference");
@@ -1100,7 +1100,7 @@ static OSStatus	BlackHole_GetBoxPropertyDataSize(AudioServerPlugInDriverRef inDr
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetBoxPropertyDataSize: bad driver reference");
@@ -1207,7 +1207,7 @@ static OSStatus	BlackHole_GetBoxPropertyData(AudioServerPlugInDriverRef inDriver
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetBoxPropertyData: bad driver reference");
@@ -1386,7 +1386,7 @@ static OSStatus	BlackHole_SetBoxPropertyData(AudioServerPlugInDriverRef inDriver
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData, inDataSize, inData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_SetBoxPropertyData: bad driver reference");
@@ -1551,7 +1551,7 @@ static OSStatus	BlackHole_IsDevicePropertySettable(AudioServerPlugInDriverRef in
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsDevicePropertySettable: bad driver reference");
@@ -1612,7 +1612,7 @@ static OSStatus	BlackHole_GetDevicePropertyDataSize(AudioServerPlugInDriverRef i
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetDevicePropertyDataSize: bad driver reference");
@@ -1769,7 +1769,7 @@ static OSStatus	BlackHole_GetDevicePropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt32 theNumberItemsToFetch;
 	UInt32 theItemIndex;
 	
@@ -2225,7 +2225,7 @@ static OSStatus	BlackHole_SetDevicePropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	Float64 theOldSampleRate;
 	UInt64 theNewSampleRate;
 	
@@ -2324,7 +2324,7 @@ static OSStatus	BlackHole_IsStreamPropertySettable(AudioServerPlugInDriverRef in
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsStreamPropertySettable: bad driver reference");
@@ -2372,7 +2372,7 @@ static OSStatus	BlackHole_GetStreamPropertyDataSize(AudioServerPlugInDriverRef i
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetStreamPropertyDataSize: bad driver reference");
@@ -2445,7 +2445,7 @@ static OSStatus	BlackHole_GetStreamPropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt32 theNumberItemsToFetch;
 	
 	//	check the arguments
@@ -2667,7 +2667,7 @@ static OSStatus	BlackHole_SetStreamPropertyData(AudioServerPlugInDriverRef inDri
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	Float64 theOldSampleRate;
 	UInt64 theNewSampleRate;
 	
@@ -2841,7 +2841,7 @@ static OSStatus	BlackHole_IsControlPropertySettable(AudioServerPlugInDriverRef i
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_IsControlPropertySettable: bad driver reference");
@@ -2944,7 +2944,7 @@ static OSStatus	BlackHole_GetControlPropertyDataSize(AudioServerPlugInDriverRef 
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_GetControlPropertyDataSize: bad driver reference");
@@ -3108,7 +3108,7 @@ static OSStatus	BlackHole_GetControlPropertyData(AudioServerPlugInDriverRef inDr
 	#pragma unused(inClientProcessID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt32 theNumberItemsToFetch;
 	UInt32 theItemIndex;
 	
@@ -3425,7 +3425,7 @@ static OSStatus	BlackHole_SetControlPropertyData(AudioServerPlugInDriverRef inDr
 	#pragma unused(inClientProcessID, inQualifierDataSize, inQualifierData)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	Float32 theNewVolume;
 	
 	//	check the arguments
@@ -3649,7 +3649,7 @@ static OSStatus	BlackHole_StartIO(AudioServerPlugInDriverRef inDriver, AudioObje
 	#pragma unused(inClientID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_StartIO: bad driver reference");
@@ -3693,7 +3693,7 @@ static OSStatus	BlackHole_StopIO(AudioServerPlugInDriverRef inDriver, AudioObjec
 	#pragma unused(inClientID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_StopIO: bad driver reference");
@@ -3740,7 +3740,7 @@ static OSStatus	BlackHole_GetZeroTimeStamp(AudioServerPlugInDriverRef inDriver, 
 	#pragma unused(inClientID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	UInt64 theCurrentHostTime;
 	Float64 theHostTicksPerRingBuffer;
 	Float64 theHostTickOffset;
@@ -3787,7 +3787,7 @@ static OSStatus	BlackHole_WillDoIOOperation(AudioServerPlugInDriverRef inDriver,
 	#pragma unused(inClientID)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_WillDoIOOperation: bad driver reference");
@@ -3832,7 +3832,7 @@ static OSStatus	BlackHole_BeginIOOperation(AudioServerPlugInDriverRef inDriver, 
 	#pragma unused(inClientID, inOperationID, inIOBufferFrameSize, inIOCycleInfo)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_BeginIOOperation: bad driver reference");
@@ -3850,7 +3850,7 @@ static OSStatus	BlackHole_DoIOOperation(AudioServerPlugInDriverRef inDriver, Aud
 	#pragma unused(inClientID, inIOCycleInfo, ioSecondaryBuffer)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_DoIOOperation: bad driver reference");
@@ -3946,7 +3946,7 @@ static OSStatus	BlackHole_EndIOOperation(AudioServerPlugInDriverRef inDriver, Au
 	#pragma unused(inClientID, inOperationID, inIOBufferFrameSize, inIOCycleInfo)
 	
 	//	declare the local variables
-	OSStatus theAnswer = 0;
+	OSStatus theAnswer = kAudioHardwareNoError;
 	
 	//	check the arguments
 	FailWithAction(inDriver != gAudioServerPlugInDriverRef, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_EndIOOperation: bad driver reference");
