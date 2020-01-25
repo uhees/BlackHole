@@ -1409,15 +1409,18 @@ static OSStatus	BlackHole_SetBoxPropertyData(AudioServerPlugInDriverRef inDriver
 				FailWithAction(inDataSize != sizeof(CFStringRef), theAnswer = kAudioHardwareBadPropertySizeError, Done, "BlackHole_SetBoxPropertyData: wrong size for the data for kAudioObjectPropertyName");
 				CFStringRef* theNewName = (CFStringRef*)inData;
 				pthread_mutex_lock(&gPlugIn_StateMutex);
-				if((theNewName != NULL) && (*theNewName != NULL))
-				{
-					CFRetain(*theNewName);
-				}
-				if(gBox_Name != NULL)
-				{
-					CFRelease(gBox_Name);
-				}
-				gBox_Name = *theNewName;
+                if(theNewName != NULL)
+                {
+                    if(*theNewName != NULL)
+                    {
+                        CFRetain(*theNewName);
+                    }
+                    if(gBox_Name != NULL)
+                    {
+                        CFRelease(gBox_Name);
+                    }
+                    gBox_Name = *theNewName;
+                }
 				pthread_mutex_unlock(&gPlugIn_StateMutex);
 				*outNumberPropertiesChanged = 1;
 				outChangedAddresses[0].mSelector = kAudioObjectPropertyName;
