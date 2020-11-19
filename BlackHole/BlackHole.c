@@ -3888,6 +3888,9 @@ static OSStatus	BlackHole_DoIOOperation(AudioServerPlugInDriverRef inDriver, Aud
 	FailWithAction(inDeviceObjectID != kObjectID_Device, theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_DoIOOperation: bad device ID");
 	FailWithAction((inStreamObjectID != kObjectID_Stream_Input) && (inStreamObjectID != kObjectID_Stream_Output), theAnswer = kAudioHardwareBadObjectError, Done, "BlackHole_DoIOOperation: bad stream ID");
     
+    // IO Lock
+    pthread_mutex_lock(&gDevice_IOMutex);
+    
     /*     READ INPUT         */
 	if(inOperationID == kAudioServerPlugInIOOperationReadInput)
 	{
@@ -3963,6 +3966,8 @@ static OSStatus	BlackHole_DoIOOperation(AudioServerPlugInDriverRef inDriver, Aud
         // clear the io buffer
         memset(ioMainBuffer, 0, inIOBufferByteSize);
     }
+    
+    pthread_mutex_unlock(&gDevice_IOMutex);
 
 Done:
 	return theAnswer;
